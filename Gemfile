@@ -48,6 +48,7 @@ end
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+  gem 'pry-rails'
 end
 
 group :test do
@@ -57,3 +58,5 @@ group :test do
 end
 
 gem 'coveralls', require: false
+
+gem "slim-rails"

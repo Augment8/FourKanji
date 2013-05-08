@@ -1,0 +1,20 @@
+- if flash[:answer] == :success
+  .success 正解
+- elsif flash[:answer] == :failure
+  .failure 不正解
+
+.description
+  = @question.description
+
+.question
+  .first
+    = question_box @question.first
+  .second
+    = question_box @question.second
+  .third
+    = question_box @question.third
+  .fourth
+    = question_box @question.fourth
+
+- @question.answers.each do |v|
+  = answer_form v
