@@ -3,6 +3,11 @@ class GamesController < ApplicationController
   end
 
   def show
+    if game.finish?
+      redirect_to action: :result
+      return
+    end
+
     case game.time
     when 1
       idiom = OpenStruct.new({
@@ -16,20 +21,21 @@ class GamesController < ApplicationController
           descripion: '相手を簡単に倒してしまう',
         })
       @question = Question.new idiom, 2, '一期会A'
-    else
-      redirect_to action: :result
     end
   end
 
-  def create
-    if answer = params[:answer]
-      game.answer answer
-      if game.success?
-        flash[:answer] = :success
-      else
-        flash[:answer] = :failure
-      end
+  def update
+    answer = params[:answer]
+    raise '入力データが不正' if answer.nil?
+
+    game.answer answer
+
+    if game.success?
+      flash[:answer] = :success
+    else
+      flash[:answer] = :failure
     end
+
     save_game
     redirect_to action: :show
   end
