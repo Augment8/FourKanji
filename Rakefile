@@ -4,3 +4,8 @@
 require File.expand_path('../config/application', __FILE__)
 
 FourKanji::Application.load_tasks
+
+desc 'deploy'
+task :deploy do
+  sh 'git push heroku master'
+end
