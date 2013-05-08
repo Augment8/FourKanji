@@ -44,4 +44,8 @@ class Game
   def point
     @point
   end
+
+  def finish?
+    @time > 2
+  end
 end

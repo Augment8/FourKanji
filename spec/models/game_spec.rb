@@ -24,4 +24,29 @@ describe Game do
       its(:point) { should eq(0) }
     end
   end
+
+  describe '#finish?' do
+    subject { game.finish? }
+
+    before :each do
+      (n-1).times do
+        game.next_time
+      end
+    end
+
+    context '1問目の時' do
+      let(:n) { 1 }
+      it { should be_false }
+    end
+
+    context '2問目の時' do
+      let(:n) { 2 }
+      it { should be_false }
+    end
+
+    context '3問目の時' do
+      let(:n) { 3 }
+      it { should be_true }
+    end
+  end
 end
