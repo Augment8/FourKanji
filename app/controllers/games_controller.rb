@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   def index
+    session[:game] = nil
   end
 
   def show
