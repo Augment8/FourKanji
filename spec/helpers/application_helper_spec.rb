@@ -6,7 +6,7 @@ describe ApplicationHelper do
 
     context 'nil のとき' do
       let(:str) { nil }
-      it { should eq('□') }
+      it { should eq('&nbsp;') }
     end
 
     context '"本" のとき' do

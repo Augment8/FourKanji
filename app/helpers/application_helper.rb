@@ -1,6 +1,6 @@
 module ApplicationHelper
   def question_box(str)
-    return '□' if str.nil?
+    return '&nbsp;'.html_safe if str.nil?
 
     str
   end
