@@ -7,5 +7,13 @@ FourKanji::Application.load_tasks
 
 desc 'deploy'
 task :deploy do
-  sh 'git push heroku master'
+  sh 'git branch -f deploying'
+  sh 'git checkout deploying'
+  sh 'RAILS_ENV=production bundle exec rake assets:clobber'
+  sh 'RAILS_ENV=production bundle exec rake assets:precompile'
+  sh 'git add public/assets'
+  sh 'git commit -m "add assets"'
+  sh 'git push heroku deploying:master -f'
+  ### sh 'heroku run rake db:migrate'
+  sh 'git cho master'
 end
