@@ -1,12 +1,30 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
+  describe 'result_box' do
+    subject { helper.result_box(answer) }
+    context '正解の時' do
+      let(:answer) { :success }
+      it { should match('正解') }
+    end
+
+    context '不正解の時' do
+      let(:answer) { :failure }
+      it { should match('不正解') }
+    end
+
+    context 'どちらでもない時' do
+      let(:answer) { nil }
+      it { should match('&nbsp;') }
+    end
+  end
+
   describe 'question_box(str)' do
     subject { helper.question_box(str) }
 
     context 'nil のとき' do
       let(:str) { nil }
-      it { should eq('□') }
+      it { should eq('&nbsp;') }
     end
 
     context '"本" のとき' do

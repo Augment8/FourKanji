@@ -18,7 +18,7 @@ end
 end
 
 ならば(/^不正解する$/) do
-  should have_css('.failure')
+  should have_css('.alert')
 end
 
 ならば(/^メイン画面を表示$/) do
