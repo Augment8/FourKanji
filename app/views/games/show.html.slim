@@ -1,10 +1,4 @@
-- if flash[:answer] == :success
-  .success 正解
-- elsif flash[:answer] == :failure
-  .failure 不正解
-
-.description
-  = @question.description
+= result_box flash[:answer]
 
 .question
   .first
@@ -16,5 +10,10 @@
   .fourth
     = question_box @question.fourth
 
-- @question.answers.each do |v|
-  = answer_form v
+.description
+  = @question.description
+
+.selector
+  .selectors
+    - @question.answers.each do |v|
+      = answer_form v

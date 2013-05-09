@@ -1,10 +1,7 @@
-- if flash[:answer] == :success
-  .success 正解
-- elsif flash[:answer] == :failure
-  .failure 不正解
+= result_box flash[:answer]
 
 dl
   dt 正解数
   dd.point = @game.point
 
-a href="/" やめる
+a.button href="/" メニューにもどる
