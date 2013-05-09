@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def result_box(answer)
+    render 'games/result_box', format: :html, answer: answer
+  end
+
   def question_box(str)
     return '&nbsp;'.html_safe if str.nil?
 
