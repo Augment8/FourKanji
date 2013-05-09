@@ -9,7 +9,7 @@ module ApplicationHelper
     ret = form_tag "/game", method: :put do
       [
         hidden_field_tag(:answer, str),
-        submit_tag(str),
+        submit_tag(str, class: [:large, :button]),
       ].join.html_safe
     end
   end
