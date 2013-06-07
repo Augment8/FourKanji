@@ -63,3 +63,4 @@ end
 gem 'coveralls', require: false
 
 gem "slim-rails"
+gem 'simple_form'
