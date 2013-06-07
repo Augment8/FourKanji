@@ -7,7 +7,7 @@ end
   put_current_path
 end
 
-もし(/^問題登録画面にアクセス$/) do
+もし(/^四字熟語登録画面にアクセス$/) do
   visit '/idioms/new'
   put_current_path
 end
