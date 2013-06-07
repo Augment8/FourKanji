@@ -56,9 +56,11 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
+  gem 'poltergeist'
   gem 'database_cleaner'
 end
 
 gem 'coveralls', require: false
 
 gem "slim-rails"
+gem 'simple_form'

@@ -3,15 +3,15 @@ require 'spec_helper'
 describe Question do
   let(:question) { Question.new idiom, answer, choicees }
   let(:choicees) { '一会五A' }
-  let(:idiom) { OpenStruct.new params }
-  let(:answer) { 3 }
-
-  let(:params) do
-    {
-      content: '用意周到',
-      description: '準備に手抜かりがないさま',
-    }
+  let(:idiom) do
+    i = Idiom.new
+    i.content = content
+    i.description = description
+    i
   end
+  let(:content) { '用意周到' }
+  let(:description) { '準備に手抜かりがないさま' }
+  let(:answer) { 3 }
 
   describe '#initialize(idiom, answer_number)' do
     subject { question }
@@ -20,7 +20,7 @@ describe Question do
 
   describe '#description' do
     subject { question.description }
-    it { should eq(params[:description]) }
+    it { should eq(description) }
   end
 
   describe '#first' do
