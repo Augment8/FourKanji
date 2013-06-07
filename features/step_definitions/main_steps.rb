@@ -1,13 +1,20 @@
+def put_current_path
+  puts('current_path: ' + page.current_path)
+end
+
 もし(/^メイン画面にアクセス$/) do
   visit '/'
+  put_current_path
 end
 
 もし(/^問題登録画面にアクセス$/) do
   visit '/idioms/new'
+  put_current_path
 end
 
 もし(/^"(.*?)"をクリック$/) do |str|
   click_on str
+  put_current_path
 end
 
 もし(/^"(.*?)"に"(.*?)"を入力$/) do |key, value|
