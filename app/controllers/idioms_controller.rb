@@ -1,4 +1,9 @@
 class IdiomsController < ApplicationController
+
+  def index
+    @idioms = $idioms
+  end
+
   def new
     @idiom = Idiom.new
   end

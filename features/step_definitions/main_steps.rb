@@ -2,6 +2,13 @@ def put_current_path
   puts('current_path: ' + page.current_path)
 end
 
+前提(/^四字熟語が登録されている:$/) do |table|  # table is a Cucumber::Ast::Table
+  i = Idiom.new
+  i.content = '用意周到'
+  i.description = '何事にも用意がすみずみま行き届いて万全なこと。'
+  $idioms = [i]
+end
+
 もし(/^メイン画面にアクセス$/) do
   visit '/'
   put_current_path
@@ -9,6 +16,11 @@ end
 
 もし(/^四字熟語登録画面にアクセス$/) do
   visit '/idioms/new'
+  put_current_path
+end
+
+もし(/^四字熟語一覧画面にアクセス$/) do
+  visit '/idioms'
   put_current_path
 end
 
@@ -46,4 +58,8 @@ end
 
 ならば(/^"(.*?)"と通知$/) do |message|
   should have_css('.notification', message)
+end
+
+ならば(/^"(.*?)"に"(.*?)"と表示$/) do |selector, value|
+  should have_css(selector, text: value)
 end
