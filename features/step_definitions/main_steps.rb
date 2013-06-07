@@ -24,6 +24,11 @@ end
   put_current_path
 end
 
+もし(/^漢字一覧画面にアクセス$/) do
+  visit '/characters'
+  put_current_path
+end
+
 もし(/^"(.*?)"をクリック$/) do |str|
   click_on str
   put_current_path
@@ -62,4 +67,10 @@ end
 
 ならば(/^"(.*?)"に"(.*?)"と表示$/) do |selector, value|
   should have_css(selector, text: value)
+end
+
+ならば(/^"(.*?)"の(\d+)番目は"(.*?)"と表示$/) do |selector, n, value|
+  n = n.to_i - 1
+  text = all(selector)[n].text
+  expect( text ).to eq(value)
 end
