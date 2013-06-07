@@ -1,0 +1,9 @@
+.notification= flash[:notice]
+
+h1
+   四字熟語登録
+
+= simple_form_for @idiom do |f|
+  = f.input :content, label: '四字熟語'
+  = f.input :description, label: '意味'
+  = f.button :submit, '登録'

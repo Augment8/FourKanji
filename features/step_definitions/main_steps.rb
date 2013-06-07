@@ -2,8 +2,16 @@
   visit '/'
 end
 
+もし(/^問題登録画面にアクセス$/) do
+  visit '/idioms/new'
+end
+
 もし(/^"(.*?)"をクリック$/) do |str|
   click_on str
+end
+
+もし(/^"(.*?)"に"(.*?)"を入力$/) do |key, value|
+  fill_in key, with: value
 end
 
 ならば(/^問題は"(.*?)" "(.*?)" "(.*?)" "(.*?)"$/) do |first, second, third, fourth|
@@ -27,4 +35,8 @@ end
 
 ならば(/^正解数は (\d+)$/) do |n|
   should have_css('.point', text: n)
+end
+
+ならば(/^"(.*?)"と通知$/) do |message|
+  should have_css('.notification', message)
 end
